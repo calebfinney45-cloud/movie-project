@@ -1,17 +1,12 @@
 let movies = [];
 
 async function loadMovies () {
-    try { const response = await fetch('https://raw.githubusercontent.com/vega/vega/main/docs/data/movies.json');
+     const response = await fetch('https://raw.githubusercontent.com/vega/vega/main/docs/data/movies.json');
           const data = await response.json();
           //Take a small amout ensuring page isn't crowded
           movies = data.slice(0, 20);
           //Send data to be put on screen
           renderMovies(movies);
-    }
-    catch (error) {
-        console.log("Something went wrong:", error);
-        document.querySelector('#movie-grid').innerHTML = '<p>Failed to load movies.</p>';
-    }
 }
 
 function renderMovies (movieArray) {
